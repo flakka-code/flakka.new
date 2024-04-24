@@ -1,0 +1,9 @@
+include: package:core_analysis/analysis_options_dev.yaml
+analyzer:
+  exclude:
+    - __brick__/
+    - bricks/
+    - packages
+linter:
+  rules:
+    public_member_api_docs: false

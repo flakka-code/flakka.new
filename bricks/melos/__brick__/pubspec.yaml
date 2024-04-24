@@ -1,0 +1,10 @@
+name: {{package_name.snakeCase()}}_mono
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.3.0-279.3.beta <4.0.0"
+
+dev_dependencies:
+  core_analysis: ^0.3.8
+  melos: ^4.0.0
