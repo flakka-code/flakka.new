@@ -1,0 +1,21 @@
+name: package
+description: A core Dart package.
+version: 0.0.0
+environment:
+  mason: ">=0.1.0-dev.53 <0.1.0"
+vars:
+  package_name:
+    type: string
+    description: The package name
+    default: my_package
+    prompt: "What is the project name?"
+#  description:
+#    type: string
+#    description: The package description
+#    default: A very good dart package
+#    prompt: "What is the project description?"
+#  publishable:
+#    type: boolean
+#    description: Whether the generated package is intended to be published.
+#    default: false
+#    prompt: "Will the package be published?"

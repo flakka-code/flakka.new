@@ -1,0 +1,9 @@
+test:
+
+create-packages:
+  #rm -rf flakka*
+  mason make package --package_name flakka
+  mason make package --package_name flakka_internal
+  cd flakka_internal && dart pub add 'flakka:{"path":"../flakka"}'
+  mason make package --package_name flakka_main
+  mason make package --package_name flakka_test
