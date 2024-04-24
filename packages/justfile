@@ -2,9 +2,9 @@ test:
 
 create-packages:
   #rm -rf flakka*
-  mason make package --package_name flakka --on-conflict=overwrite
+  mason make package --on-conflict=overwrite --package_name flakka
   cd flakka && dart format . && dart fix --apply
-  mason make package --package_name flakka_internal --on-conflict=overwrite
+  mason make package --on-conflict=overwrite --package_name flakka_internal
   cd flakka_internal && dart format . && dart fix --apply
 #  cd flakka_internal && dart pub add 'flakka:{"path":"../flakka"}'
 #  mason make package --package_name flakka_main
