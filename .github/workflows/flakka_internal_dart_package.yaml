@@ -1,0 +1,6 @@
+on: push
+jobs:
+  job1:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+    with:
+      working_directory: packages/flakka_internal
