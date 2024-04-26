@@ -4,11 +4,18 @@ scaffold:
   @just scaffold-package dart_package flakka_annotations "Annotations for the flakka package"
   @just scaffold-package dart_package flakka "A domain model framework and runtime for dart and flutter"
   @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
-  @just scaffold-sibling-dependency flakka flakka_test
   @just scaffold-package flutter_package flakka_flutter "Flutter support for the flakka package"
-  @just scaffold-sibling-dependency flakka_flutter flakka
   @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
+  @just scaffold-sibling-dependency flakka flakka_test
+  @just scaffold-sibling-dependency flakka_flutter flakka
   rm -rf */.github
+
+format-fix-all:
+  @just format-fix flakka_annotations
+  @just format-fix flakka
+  @just format-fix flakka_test
+  @just format-fix flakka_flutter
+  @just format-fix flakka_cli
 
 scaffold-package template name description:
   #!/usr/bin/expect -f
@@ -21,5 +28,11 @@ scaffold-sibling-dependency target dependency:
   #!/usr/bin/env zsh
   cd {{target}}
   dart pub add '{{dependency}}:{"path":"../{{dependency}}"}'
+  dart format .
+  dart fix --apply
+
+format-fix target:
+  #!/usr/bin/env zsh
+  cd {{target}}
   dart format .
   dart fix --apply
