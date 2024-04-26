@@ -5,9 +5,6 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -21,3 +18,8 @@ jobs:
     with:
       includes: "**/*.md"
       modified_files_only: false
+
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
