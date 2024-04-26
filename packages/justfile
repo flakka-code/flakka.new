@@ -1,41 +1,5 @@
-test:
+default:
 
-create-packages:
-  #rm -rf flakka*
-  mason make package --on-conflict=overwrite --package_name flakka
-  cd flakka && dart format . && dart fix --apply
-  mason make package --on-conflict=overwrite --package_name flakka_internal
-  cd flakka_internal && dart format . && dart fix --apply
-#  cd flakka_internal && dart pub add 'flakka:{"path":"../flakka"}'
-#  mason make package --package_name flakka_main
-#  mason make package --package_name flakka_test
-
-scaffold-old:
-  #!/usr/bin/env zsh
-  # Define a list of values to iterate over
-  cd packages
-  very_good create dart_package flakka --description "A domain model framework and runtime"
-  very_good create dart_cli flakka_cli --description "A CLI for the flakka domain model framework and runtime"
-  # Define a sequence of commands to apply to each item
-  # For illustration, let's consider some basic commands like echoing, creating files, and renaming
-
-  # Loop through the list of items
-  for item in "${items[@]}"; do
-      # Display the current item
-      echo "Processing $item"
-
-      # Create a file named after the item
-      touch "${item}.txt"
-
-      # Append some text to the file
-      echo "This is some content for $item" >> "${item}.txt"
-
-      # Rename the file
-      mv "${item}.txt" "${item}_processed.txt"
-
-      # Display a message indicating the item has been processed
-      echo "$item has been processed and saved as ${item}_processed.txt"
-  done
 scaffold:
   @just scaffold-package dart_package flakka "A domain model framework and runtime for dart and flutter"
   @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
@@ -46,25 +10,9 @@ scaffold:
   @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
   rm -rf */.github
 
-clean-package name:
-  #!/usr/bin/env zsh
-  cd {{name}
-
 scaffold-package template name description:
   #!/usr/bin/expect -f
   set timeout 2
   spawn very_good create {{template}} {{name}} --description "{{description}}"
-  expect "Overwrite *? (Yyna)" { send "Y\r" };
-  expect eof
-scaffold-default:
-  #!/usr/bin/expect -f
-  set timeout 30
-  spawn very_good create dart_package flakka --description "A domain model framework and runtime"
-  expect "Overwrite *? (Yyna)" { send "Y\r" };
-  expect eof
-scaffold-cli:
-  #!/usr/bin/expect -f
-  set timeout 30
-  spawn   very_good create dart_cli flakka_cli --description "A CLI for the flakka domain model framework and runtime"
   expect "Overwrite *? (Yyna)" { send "Y\r" };
   expect eof

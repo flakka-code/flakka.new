@@ -9,9 +9,6 @@ jobs:
 #    steps:
 #      - uses: actions/checkout@v4
 #      - uses: dart-lang/setup-dart@v1
-#      - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
-#        with:
-#          working_directory: packages/flakka
 #      - uses: taiki-e/install-action@just
 #      - run: dart pub global activate mason_cli
 #      - run: just add-bricks
