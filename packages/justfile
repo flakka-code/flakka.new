@@ -6,9 +6,10 @@ scaffold:
   @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
   @just scaffold-package flutter_package flakka_flutter "Flutter support for the flakka package"
   @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
+  rm -rf */.github
   @just scaffold-sibling-dependency flakka flakka_test
   @just scaffold-sibling-dependency flakka_flutter flakka
-  rm -rf */.github
+  @just format-fix-all
 
 format-fix-all:
   @just format-fix flakka_annotations
