@@ -1,7 +1,7 @@
+import 'package:flakka_cli/src/command_runner.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:flakka_cli/src/command_runner.dart';
 
 class _MockLogger extends Mock implements Logger {}
 

@@ -8,6 +8,8 @@ environment:
   flutter: "^3.19.0"
 
 dependencies:
+  flakka:
+    path: ../flakka
   flutter:
     sdk: flutter
 

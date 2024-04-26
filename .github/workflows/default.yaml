@@ -21,13 +21,3 @@ jobs:
     with:
       includes: "**/*.md"
       modified_files_only: false
-
-  build_main:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
-    with:
-      working_directory: packages/flakka
-
-  build_internal:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
-    with:
-      working_directory: packages/flakka_internal

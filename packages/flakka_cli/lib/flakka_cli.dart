@@ -1,4 +1,4 @@
-/// flakka_cli, A CLI for generating and building flakka domain models and projects
+/// flakka_cli, A CLI for flakka
 ///
 /// ```sh
 /// # activate flakka_cli

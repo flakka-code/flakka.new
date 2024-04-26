@@ -1,5 +1,5 @@
 name: flakka_cli
-description: A CLI for generating and building flakka domain models and projects
+description: A CLI for flakka
 version: 0.0.1
 publish_to: none
 
