@@ -1,11 +1,18 @@
-test:
+default:
 
-create-packages:
-  #rm -rf flakka*
-  mason make package --on-conflict=overwrite --package_name flakka
-  cd flakka && dart format . && dart fix --apply
-  mason make package --on-conflict=overwrite --package_name flakka_internal
-  cd flakka_internal && dart format . && dart fix --apply
-#  cd flakka_internal && dart pub add 'flakka:{"path":"../flakka"}'
-#  mason make package --package_name flakka_main
-#  mason make package --package_name flakka_test
+scaffold:
+  @just scaffold-package dart_package flakka "A domain model framework and runtime for dart and flutter"
+  @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
+  @just scaffold-package dart_package flakka_internal "Internals for the flakka package"
+  @just scaffold-package dart_package flakka_annotations "Annotations for the flakka package"
+  @just scaffold-package dart_package flakka_internal "Internals for the flakka package"
+  @just scaffold-package flutter_package flakka_flutter "Flutter support for the flakka package"
+  @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
+  rm -rf */.github
+
+scaffold-package template name description:
+  #!/usr/bin/expect -f
+  set timeout 2
+  spawn very_good create {{template}} {{name}} --description "{{description}}"
+  expect "Overwrite *? (Yyna)" { send "Y\r" };
+  expect eof
