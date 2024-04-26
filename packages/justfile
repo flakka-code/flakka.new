@@ -1,14 +1,15 @@
 default:
 
 scaffold:
-  @just scaffold-package dart_package flakka "A domain model framework and runtime for dart and flutter"
-  @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
-  @just scaffold-package dart_package flakka_internal "Internals for the flakka package"
-  @just scaffold-package dart_package flakka_annotations "Annotations for the flakka package"
-  @just scaffold-package dart_package flakka_internal "Internals for the flakka package"
   @just scaffold-package flutter_package flakka_flutter "Flutter support for the flakka package"
-  @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
-  rm -rf */.github
+#  @just scaffold-package dart_package flakka_annotations "Annotations for the flakka package"
+#  @just scaffold-package dart_package flakka "A domain model framework and runtime for dart and flutter"
+#  @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
+#  @just scaffold-sibling-dependency flakka flakka_test
+#  @just scaffold-package flutter_package flakka_flutter "Flutter support for the flakka package"
+#  @just scaffold-sibling-dependency flakka_flutter flakka
+#  @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
+#  rm -rf */.github
 
 scaffold-package template name description:
   #!/usr/bin/expect -f
@@ -16,3 +17,10 @@ scaffold-package template name description:
   spawn very_good create {{template}} {{name}} --description "{{description}}"
   expect "Overwrite *? (Yyna)" { send "Y\r" };
   expect eof
+
+scaffold-sibling-dependency target dependency:
+  #!/usr/bin/env zsh
+  cd {{target}}
+  dart pub add '{{dependency}}:{"path":"../{{dependency}}"}'
+  dart format .
+  dart fix --apply
