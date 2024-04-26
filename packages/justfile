@@ -5,7 +5,7 @@ scaffold:
   @just scaffold-package dart_package flakka "A domain model framework and runtime for dart and flutter"
   @just scaffold-package dart_package flakka_test "A test kit for the flakka package"
   @just scaffold-package flutter_package flakka_flutter "Flutter support for the flakka package"
-  @just scaffold-package dart_cli flakka_cli "A CLI for generating and building flakka domain models and projects"
+  @just scaffold-package dart_cli flakka_cli "A CLI for flakka"
   rm -rf */.github
   @just scaffold-sibling-dependency flakka flakka_test
   @just scaffold-sibling-dependency flakka_flutter flakka
@@ -35,5 +35,5 @@ scaffold-sibling-dependency target dependency:
 format-fix target:
   #!/usr/bin/env zsh
   cd {{target}}
-  dart format .
   dart fix --apply
+  dart format .
