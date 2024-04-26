@@ -1,5 +1,5 @@
 /// {@template flakka}
-/// A Very Good Project created by Very Good CLI.
+/// A domain model framework and runtime for dart and flutter
 /// {@endtemplate}
 class Flakka {
   /// {@macro flakka}

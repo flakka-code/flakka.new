@@ -1,5 +1,5 @@
-name: flakka
-description: A domain model framework and runtime for dart and flutter
+name: flakka_test
+description: A test kit for the flakka package
 version: 0.1.0+1
 publish_to: none
 
